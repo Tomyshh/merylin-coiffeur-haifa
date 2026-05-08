@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Merylin — Hair Salon Haifa | Color, Styling & Keratin in Neve Sha'anan",
+    "description": "Merylin is a premium hair salon in Haifa (Neve Sha'anan): cuts, color, balayage, blowouts and treatments. Experience refined styling — among the best hair salon experiences in Haifa.",
+    "keywords": "hair salon Haifa, best hair salon in Haifa, Haifa hair stylist, Neve Sha'anan salon, hair color Haifa, keratin Haifa, מספרה חיפה, מספרה נווה שאנן, עיצוב שיער חיפה, החלקות שיער חיפה, צביעת שיער חיפה, מספרת נשים חיפה"
+  },
+  "brand": "Merylin",
+  "nav": {
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Merylin",
+    "subtitleLine": "Premium hair salon in Haifa",
+    "tagline": "Precision, calm luxury, and hair that feels expensive — a Haifa salon centered on you.",
+    "ctaPrimary": "Book on WhatsApp",
+    "ctaSecondary": "Call us",
+    "imageAlt": "Premium hair salon atmosphere"
+  },
+  "services": {
+    "title": "Services",
+    "lead": "Full care — from classics to the latest trends.",
+    "items": {
+      "womenCut": { "title": "Women's haircut", "desc": "Clean lines tailored to texture and personal style." },
+      "menCut": { "title": "Men's haircut", "desc": "Sharp finishing that stays polished longer." },
+      "color": { "title": "Hair color", "desc": "Rich tones with meticulous application." },
+      "blowDry": { "title": "Blow-dry / brushing", "desc": "Volume, shine and silky movement." },
+      "balayage": { "title": "Balayage", "desc": "Natural, expensive-looking dimension." },
+      "care": { "title": "Hair treatments", "desc": "Smoothing, repair and scalp-forward care." },
+      "events": { "title": "Event styling", "desc": "Weddings, evenings and camera-ready looks." }
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "lead": "Cuts, color and salon ambiance.",
+    "images": [
+      { "alt": "Elegant women's hairstyle" },
+      { "alt": "Hair color and balayage" },
+      { "alt": "Voluminous blowout" },
+      { "alt": "Treatment and shine" },
+      { "alt": "Event hair styling" },
+      { "alt": "Premium salon interior" }
+    ]
+  },
+  "contact": {
+    "title": "Let's talk",
+    "lead": "Book your next visit — hair salon Haifa, Neve Sha'anan.",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "addressLabel": "Address",
+    "hoursLabel": "Hours",
+    "address": "Neve Sha'anan, Haifa",
+    "hours": "Sun–Thu 09:00–19:00 · Fri 09:00–14:00",
+    "mapTitle": "Find us",
+    "keywordsNote": "Hair salon Haifa · best hair salon in Haifa · styling & color"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "follow": "Follow"
+  },
+  "whatsappFab": "Message on WhatsApp"
+}
