@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Conic gradient (effet lamp du Hero — component-design) */
+@utility bg-gradient-conic {
+  background-image: conic-gradient(
+    var(--conic-position, from 180deg at 50% 50%),
+    var(--tw-gradient-stops)
+  );
+}
+
 :root {
   --background: 0 0% 4%;
   --foreground: 0 0% 96%;

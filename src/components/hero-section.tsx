@@ -1,35 +1,35 @@
-import Image from "next/image";
-
 import { Hero } from "@/components/ui/hero";
 import type { Dictionary } from "@/lib/i18n";
-import { HERO_IMAGE, SITE_PHONE_TEL, SITE_WHATSAPP_URL } from "@/lib/site";
+import { SITE_PHONE_TEL, SITE_WHATSAPP_URL } from "@/lib/site";
 
+/**
+ * Hero épuré : pas de photo, fond uni + effet lamp du design (voir component-design.txt/hero.txt).
+ */
 export function HeroSection({ dict }: { dict: Dictionary }) {
   return (
-    <section className="relative isolate min-h-[85vh] w-full overflow-hidden pt-16 md:pt-0">
-      <Image
-        src={HERO_IMAGE}
-        alt={dict.hero.imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover scale-[1.02]"
-      />
-      {/* Vignette douce — pas de « rectangle » dur */}
+    <div
+      className="relative isolate w-full border-b border-white/[0.06] bg-background pt-[calc(4rem+env(safe-area-inset-top))] md:pt-[calc(4.25rem+env(safe-area-inset-top))]"
+      role="region"
+      aria-labelledby="hero-heading"
+    >
+      {/* Grain très léger (optionnel, renforce le côté premium sans image) */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_35%,_rgba(0,0,0,0.55)_100%)]"
+        className="pointer-events-none absolute inset-0 opacity-[0.35] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-background" />
 
       <Hero
+        titleId="hero-heading"
         gradient
-        blur={false}
-        className="relative min-h-[calc(85vh-4rem)] bg-transparent md:min-h-[85vh]"
+        blur
+        className="relative min-h-[min(82vh,52rem)] bg-transparent pb-16 md:pb-24"
         title={
           <span className="block">
-            <span className="block text-white">{dict.hero.title}</span>
-            <span className="mt-3 block font-display text-2xl font-normal tracking-wide text-white/90 sm:text-3xl md:text-4xl">
+            <span className="block text-foreground">{dict.hero.title}</span>
+            <span className="mt-4 block font-display text-xl font-normal tracking-[0.02em] text-muted-foreground sm:text-2xl md:text-3xl">
               {dict.hero.subtitleLine}
             </span>
           </span>
@@ -41,20 +41,20 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
             href: SITE_PHONE_TEL,
             variant: "outline",
             className:
-              "border-white/40 bg-white/5 text-white backdrop-blur-sm hover:bg-white/15 hover:text-white",
+              "border-border bg-transparent text-foreground hover:bg-secondary hover:text-foreground",
           },
           {
             label: dict.hero.ctaPrimary,
             href: SITE_WHATSAPP_URL,
             variant: "default",
             className:
-              "bg-[#25D366] text-white hover:bg-[#20bd5a] shadow-lg shadow-black/25",
+              "bg-[#25D366] text-white hover:bg-[#20bd5a] shadow-md shadow-black/20",
           },
         ]}
-        titleClassName="text-balance drop-shadow-md"
-        subtitleClassName="max-w-xl text-base text-white/75 md:text-lg"
-        actionsClassName="mt-10"
+        titleClassName="text-balance"
+        subtitleClassName="max-w-lg text-base md:max-w-xl md:text-lg"
+        actionsClassName="mt-8 md:mt-10"
       />
-    </section>
+    </div>
   );
 }
