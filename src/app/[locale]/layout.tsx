@@ -28,17 +28,17 @@ export async function generateMetadata({
       .map((k) => k.trim())
       .filter(Boolean),
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `/${locale}/`,
       languages: {
-        he: `${base}/he`,
-        en: `${base}/en`,
-        "x-default": `${base}/he`,
+        he: `${base}/he/`,
+        en: `${base}/en/`,
+        "x-default": `${base}/he/`,
       },
     },
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
-      url: `${base}/${locale}`,
+      url: `${base}/${locale}/`,
       siteName: dict.brand,
       locale: locale === "he" ? "he_IL" : "en_US",
       type: "website",

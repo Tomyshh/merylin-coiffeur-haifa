@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:firebase": "NEXT_PUBLIC_SITE_URL=https://merylin-coiffeur-haifa.web.app next build",
+    "deploy:firebase": "npm run build:firebase && firebase deploy --only hosting",
     "start": "next start",
     "lint": "eslint"
   },
@@ -12,6 +14,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "firebase": "^12.13.0",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.14.0",
     "next": "16.2.6",
@@ -26,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "firebase-tools": "^15.17.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

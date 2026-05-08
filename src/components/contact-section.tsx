@@ -4,6 +4,7 @@ import { MapPin, Phone } from "lucide-react";
 import type { Dictionary } from "@/lib/i18n";
 import {
   MAP_EMBED_URL,
+  MAP_EXTERNAL_URL,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_TEL,
   SITE_WHATSAPP_URL,
@@ -25,7 +26,7 @@ export function ContactSection({ dict }: { dict: Dictionary }) {
             <dl className="mt-10 space-y-8">
               <div className="flex gap-4">
                 <dt className="sr-only">{dict.contact.phoneLabel}</dt>
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/25">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/10 text-foreground ring-1 ring-white/15">
                   <Phone className="h-5 w-5" aria-hidden />
                 </div>
                 <dd>
@@ -34,7 +35,7 @@ export function ContactSection({ dict }: { dict: Dictionary }) {
                   </p>
                   <Link
                     href={SITE_PHONE_TEL}
-                    className="mt-1 block font-display text-xl text-foreground hover:text-primary"
+                    className="mt-1 block font-display text-xl text-foreground transition-colors hover:text-white"
                   >
                     {SITE_PHONE_DISPLAY}
                   </Link>
@@ -88,7 +89,18 @@ export function ContactSection({ dict }: { dict: Dictionary }) {
                 className="h-full min-h-[320px] w-full border-0 lg:min-h-[420px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
+            </div>
+            <div className="border-t border-border/60 bg-card/40 px-4 py-3 text-center">
+              <a
+                href={MAP_EXTERNAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                {dict.contact.mapOpenExternal} — {dict.contact.address}
+              </a>
             </div>
           </div>
         </div>

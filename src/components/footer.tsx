@@ -10,7 +10,7 @@ export function Footer({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const prefix = `/${locale}`;
+  const prefix = `/${locale}/`;
   const year = new Date().getFullYear();
 
   return (
