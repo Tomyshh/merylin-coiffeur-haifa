@@ -15,7 +15,6 @@ export type HeroAction = {
 
 export interface HeroProps
   extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
-  /** Pour aria-labelledby : id appliqué au <h1> */
   titleId?: string;
   gradient?: boolean;
   blur?: boolean;
@@ -27,10 +26,7 @@ export interface HeroProps
   actionsClassName?: string;
 }
 
-/**
- * Hero « lamp » d’après component-design.txt/hero.txt.
- * Sur fond `bg-background` uni, les masques en bas des cones se fondent sans bande visible.
- */
+/** Lamp + cones (fond uni chaud — masques alignés sur --background) */
 const Hero = React.forwardRef<HTMLElement, HeroProps>(
   (
     {
@@ -52,7 +48,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
       <section
         ref={ref}
         className={cn(
-          "relative z-0 flex min-h-[78vh] w-full flex-col items-center justify-center overflow-hidden bg-background",
+          "relative z-0 flex w-full flex-col items-stretch justify-center overflow-hidden bg-background",
           className,
         )}
         {...props}
@@ -60,71 +56,64 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
         {gradient && (
           <div className="absolute top-0 isolate z-0 flex w-full max-w-none flex-1 items-start justify-center">
             {blur && (
-              <div className="absolute top-0 z-50 h-40 w-full bg-transparent opacity-[0.12] backdrop-blur-md" />
+              <div className="absolute top-0 z-50 h-44 w-full bg-gradient-to-b from-primary/10 to-transparent opacity-95 backdrop-blur-[6px]" />
             )}
 
-            <div className="absolute inset-x-auto top-0 z-50 h-36 w-[min(28rem,90vw)] -translate-y-[-28%] rounded-full bg-primary/25 opacity-90 blur-3xl" />
+            <div className="absolute inset-x-auto top-0 z-50 h-40 w-[min(32rem,92vw)] -translate-y-[-22%] rounded-full bg-[hsl(var(--hero-glow)/0.22)] blur-3xl" />
 
             <motion.div
-              initial={{ width: "8rem" }}
+              initial={{ width: "7rem" }}
               viewport={{ once: true }}
-              transition={{ ease: "easeInOut", delay: 0.2, duration: 0.85 }}
-              whileInView={{ width: "16rem" }}
-              className="absolute top-0 z-30 h-32 -translate-y-[18%] rounded-full bg-primary/20 blur-2xl"
+              transition={{ ease: "easeInOut", delay: 0.15, duration: 0.9 }}
+              whileInView={{ width: "18rem" }}
+              className="absolute top-0 z-30 h-36 -translate-y-[14%] rounded-full bg-primary/25 blur-2xl"
             />
 
             <motion.div
-              initial={{ width: "12rem" }}
+              initial={{ width: "10rem", opacity: 0.5 }}
               viewport={{ once: true }}
-              transition={{ ease: "easeInOut", delay: 0.2, duration: 0.85 }}
-              whileInView={{ width: "min(30rem,92vw)" }}
-              className="absolute inset-x-auto top-0 z-50 h-px -translate-y-[-8%] bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+              transition={{ ease: "easeInOut", delay: 0.15, duration: 0.9 }}
+              whileInView={{ width: "min(32rem,94vw)", opacity: 1 }}
+              className="absolute inset-x-auto top-0 z-50 h-px -translate-y-[-6%] bg-gradient-to-r from-transparent via-primary/70 to-transparent"
             />
 
             <motion.div
-              initial={{ opacity: 0.4, width: "14rem" }}
-              whileInView={{ opacity: 1, width: "min(30rem,92vw)" }}
-              transition={{
-                delay: 0.2,
-                duration: 0.85,
-                ease: "easeInOut",
-              }}
+              initial={{ opacity: 0.35, width: "12rem" }}
+              whileInView={{ opacity: 1, width: "min(32rem,94vw)" }}
+              transition={{ delay: 0.15, duration: 0.9, ease: "easeInOut" }}
               style={{
                 backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
               }}
-              className="absolute inset-auto right-1/2 h-52 w-[min(30rem,92vw)] overflow-visible bg-gradient-conic from-primary/35 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
+              className="absolute inset-auto right-1/2 h-56 w-[min(32rem,94vw)] overflow-visible bg-gradient-conic from-[hsl(var(--hero-glow)/0.45)] via-primary/15 to-transparent [--conic-position:from_70deg_at_center_top]"
             >
-              <div className="absolute bottom-0 left-0 z-20 h-36 w-full bg-background [mask-image:linear-gradient(to_top,white,transparent)]" />
-              <div className="absolute bottom-0 left-0 z-20 h-full w-32 max-w-[40%] bg-background [mask-image:linear-gradient(to_right,white,transparent)]" />
+              <div className="absolute bottom-0 left-0 z-20 h-40 w-full bg-background [mask-image:linear-gradient(to_top,white,transparent)]" />
+              <div className="absolute bottom-0 left-0 z-20 h-full w-36 max-w-[42%] bg-background [mask-image:linear-gradient(to_right,white,transparent)]" />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0.4, width: "14rem" }}
-              whileInView={{ opacity: 1, width: "min(30rem,92vw)" }}
-              transition={{
-                delay: 0.2,
-                duration: 0.85,
-                ease: "easeInOut",
-              }}
+              initial={{ opacity: 0.35, width: "12rem" }}
+              whileInView={{ opacity: 1, width: "min(32rem,94vw)" }}
+              transition={{ delay: 0.15, duration: 0.9, ease: "easeInOut" }}
               style={{
                 backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
               }}
-              className="absolute inset-auto left-1/2 h-52 w-[min(30rem,92vw)] bg-gradient-conic from-transparent via-transparent to-primary/35 [--conic-position:from_290deg_at_center_top]"
+              className="absolute inset-auto left-1/2 h-56 w-[min(32rem,94vw)] bg-gradient-conic from-transparent via-transparent to-[hsl(var(--hero-glow)/0.4)] [--conic-position:from_290deg_at_center_top]"
             >
-              <div className="absolute bottom-0 right-0 z-20 h-full w-32 max-w-[40%] bg-background [mask-image:linear-gradient(to_left,white,transparent)]" />
-              <div className="absolute bottom-0 right-0 z-20 h-36 w-full bg-background [mask-image:linear-gradient(to_top,white,transparent)]" />
+              <div className="absolute bottom-0 right-0 z-20 h-full w-36 max-w-[42%] bg-background [mask-image:linear-gradient(to_left,white,transparent)]" />
+              <div className="absolute bottom-0 right-0 z-20 h-40 w-full bg-background [mask-image:linear-gradient(to_top,white,transparent)]" />
             </motion.div>
           </div>
         )}
 
         <motion.div
-          initial={{ y: 48, opacity: 0.55 }}
+          initial={{ y: 40, opacity: 0.6 }}
           viewport={{ once: true }}
-          transition={{ ease: "easeOut", delay: 0.15, duration: 0.75 }}
+          transition={{ ease: "easeOut", delay: 0.1, duration: 0.7 }}
           whileInView={{ y: 0, opacity: 1 }}
-          className="relative z-50 container flex flex-1 -translate-y-8 flex-col justify-center gap-6 px-5 md:-translate-y-12 md:px-10"
+          className="relative z-50 container flex flex-1 -translate-y-6 flex-col justify-center gap-6 px-5 md:-translate-y-10 md:px-10"
         >
-          <div className="flex flex-col items-center space-y-5 text-center md:space-y-6">
+          {/* text-start + items-start : droite en RTL (he), gauche en LTR (en) */}
+          <div className="flex w-full flex-col items-start space-y-5 text-start md:space-y-7">
             <h1
               id={titleId}
               className={cn(
@@ -145,7 +134,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               </p>
             )}
             {actions && actions.length > 0 && (
-              <div className={cn("flex flex-wrap justify-center gap-3 pt-2 md:gap-4", actionsClassName)}>
+              <div className={cn("flex flex-wrap justify-start gap-3 pt-1 md:gap-4", actionsClassName)}>
                 {actions.map((action, index) => (
                   <Button
                     key={index}

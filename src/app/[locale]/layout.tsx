@@ -71,11 +71,22 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function LocaleLayout({ children }: { children: ReactNode }) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: localeParam } = await params;
+  const locale = localeParam as Locale;
+  const dir = locale === "he" ? "rtl" : "ltr";
+  const lang = locale === "he" ? "he" : "en";
+
   return (
-    <>
+    <div dir={dir} lang={lang} className="min-h-screen bg-background">
       <LocaleHtmlAttributes />
       {children}
-    </>
+    </div>
   );
 }

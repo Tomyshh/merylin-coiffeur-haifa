@@ -22,7 +22,7 @@ export default async function HomePage({
       <JsonLd locale={locale} dict={dict} />
       <Header locale={locale} brand={dict.brand} nav={dict.nav} />
       <main>
-        <HeroSection dict={dict} />
+        <HeroSection dict={dict} locale={locale} />
         <ServicesSection dict={dict} />
         <GallerySection dict={dict} />
         <ContactSection dict={dict} />

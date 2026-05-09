@@ -60,7 +60,7 @@ export function ServicesSection({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="services"
-      className="scroll-mt-24 border-b border-border/50 bg-gradient-to-b from-background via-card/20 to-background py-20 md:py-28"
+      className="relative z-20 -mt-10 scroll-mt-[calc(5rem+env(safe-area-inset-top))] rounded-t-[1.75rem] border-b border-border/50 bg-background bg-gradient-to-b from-background via-card/15 to-background pt-14 pb-20 shadow-[0_-8px_48px_-12px_rgba(0,0,0,0.35)] md:-mt-12 md:scroll-mt-28 md:rounded-t-[2rem] md:pt-16 md:pb-28"
     >
       <div className="container px-5 md:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

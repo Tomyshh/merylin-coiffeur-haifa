@@ -13,10 +13,16 @@
   "hero": {
     "title": "Merylin",
     "subtitleLine": "Premium hair salon in Haifa",
+    "metaLine": "04-822-7005 · Haifa · Neve Sha'anan",
     "tagline": "Precision, calm luxury, and hair that feels expensive — a Haifa salon centered on you.",
     "ctaPrimary": "Book on WhatsApp",
     "ctaSecondary": "Call us",
-    "imageAlt": "Premium hair salon atmosphere"
+    "imageAlt": "Premium hair salon atmosphere",
+    "sideColumn": {
+      "kicker": "Merylin",
+      "body": "Color · Cut · Care\nHaifa, Neve Sha'anan",
+      "accent": "We look forward to meeting you"
+    }
   },
   "services": {
     "title": "Services",
