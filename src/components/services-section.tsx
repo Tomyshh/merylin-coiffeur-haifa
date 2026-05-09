@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import type { Dictionary } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 
 const ORDER = [
   "womenCut",
@@ -23,6 +24,8 @@ const ORDER = [
   "events",
 ] as const;
 
+type ServiceKey = (typeof ORDER)[number];
+
 const ICONS = {
   womenCut: Scissors,
   menCut: User,
@@ -33,26 +36,76 @@ const ICONS = {
   events: Crown,
 } as const;
 
-function placementClasses(key: (typeof ORDER)[number]): string {
-  switch (key) {
-    case "womenCut":
-      return "lg:col-span-8 lg:row-span-2 lg:row-start-1 lg:col-start-1";
-    case "menCut":
-      return "lg:col-span-4 lg:row-start-1 lg:col-start-9";
-    case "color":
-      return "lg:col-span-4 lg:row-start-2 lg:col-start-9";
-    case "blowDry":
-      return "lg:col-span-4 lg:row-start-3 lg:col-start-1";
-    case "balayage":
-      return "lg:col-span-4 lg:row-start-3 lg:col-start-5";
-    case "care":
-      return "lg:col-span-4 lg:row-start-3 lg:col-start-9";
-    case "events":
-      return "lg:col-span-12 lg:row-start-4 lg:col-start-1";
-    default:
-      return "";
+/** Couleur, halo et forme légèrement décalée par prestation */
+const SERVICE_THEME: Record<
+  ServiceKey,
+  {
+    card: string;
+    iconWrap: string;
+    icon: string;
+    blob: string;
   }
-}
+> = {
+  womenCut: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-rose-400/55 bg-gradient-to-br from-rose-950/35 via-white/[0.02] to-transparent hover:border-white/15 hover:border-s-rose-300/80",
+    iconWrap:
+      "rounded-2xl rounded-br-3xl bg-gradient-to-br from-rose-400/30 to-rose-950/40 ring-1 ring-rose-300/25 shadow-[0_0_24px_-4px_rgba(251,113,133,0.35)]",
+    icon: "text-rose-50",
+    blob: "absolute -end-10 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-rose-500/15 blur-3xl",
+  },
+  menCut: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-sky-400/50 bg-gradient-to-bl from-sky-950/30 via-transparent to-indigo-950/15 hover:border-white/15 hover:border-s-sky-300/75",
+    iconWrap:
+      "rounded-xl rounded-tl-2xl rounded-br-2xl bg-gradient-to-tr from-sky-400/25 to-indigo-900/50 ring-1 ring-sky-300/20 shadow-[0_0_20px_-6px_rgba(56,189,248,0.4)]",
+    icon: "text-sky-50",
+    blob: "absolute -start-6 bottom-0 h-36 w-36 rounded-full bg-sky-400/12 blur-3xl",
+  },
+  color: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-fuchsia-400/50 bg-gradient-to-tr from-fuchsia-950/30 via-violet-950/10 to-transparent hover:border-white/15 hover:border-s-fuchsia-300/75",
+    iconWrap:
+      "rounded-2xl rounded-tl-sm bg-gradient-to-br from-fuchsia-500/30 to-violet-950/50 ring-1 ring-fuchsia-400/25 shadow-[0_0_28px_-4px_rgba(217,70,239,0.35)]",
+    icon: "text-fuchsia-50",
+    blob: "absolute end-1/4 -top-12 h-28 w-44 rotate-12 rounded-full bg-violet-500/15 blur-2xl",
+  },
+  blowDry: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-cyan-400/50 bg-gradient-to-br from-cyan-950/25 via-transparent to-teal-950/20 hover:border-white/15 hover:border-s-cyan-300/75",
+    iconWrap:
+      "rounded-full rounded-tr-md bg-gradient-to-bl from-cyan-300/35 to-teal-900/45 ring-1 ring-cyan-200/25 shadow-[0_0_22px_-4px_rgba(34,211,238,0.35)]",
+    icon: "text-cyan-50",
+    blob: "absolute -end-4 bottom-4 h-24 w-32 -rotate-6 rounded-full bg-teal-400/12 blur-2xl",
+  },
+  balayage: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-amber-400/55 bg-gradient-to-bl from-amber-950/35 via-orange-950/10 to-transparent hover:border-white/15 hover:border-s-amber-300/80",
+    iconWrap:
+      "rounded-3xl rounded-bl-lg bg-gradient-to-tr from-amber-400/35 to-orange-950/50 ring-1 ring-amber-300/30 shadow-[0_0_26px_-4px_rgba(251,191,36,0.4)]",
+    icon: "text-amber-50",
+    blob: "absolute start-0 top-0 h-32 w-32 rounded-full bg-amber-400/10 blur-3xl",
+  },
+  care: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-emerald-400/50 bg-gradient-to-br from-emerald-950/30 via-transparent to-cyan-950/10 hover:border-white/15 hover:border-s-emerald-300/75",
+    iconWrap:
+      "rounded-2xl rounded-tr-3xl bg-gradient-to-br from-emerald-400/28 to-teal-950/45 ring-1 ring-emerald-300/22 shadow-[0_0_24px_-4px_rgba(52,211,153,0.35)]",
+    icon: "text-emerald-50",
+    blob: "absolute end-0 bottom-0 h-36 w-28 translate-x-1/4 rounded-full bg-emerald-400/12 blur-3xl",
+  },
+  events: {
+    card: "border border-white/[0.08] border-s-[3px] border-s-[hsl(43_72%_52%/0.65)] bg-gradient-to-r from-amber-950/40 via-yellow-950/15 to-amber-950/25 hover:border-white/15 hover:border-s-[hsl(48_85%_58%/0.85)]",
+    iconWrap:
+      "rounded-md rounded-br-2xl rounded-tl-2xl bg-gradient-to-br from-[hsl(43_62%_55%/0.45)] to-amber-950/55 ring-1 ring-amber-200/30 shadow-[0_0_32px_-4px_rgba(234,179,8,0.35)]",
+    icon: "text-amber-50",
+    blob: "absolute start-1/3 top-1/2 h-48 w-64 -translate-y-1/2 rounded-full bg-amber-500/10 blur-3xl",
+  },
+};
+
+const CARD_RADIUS: Record<ServiceKey, string> = {
+  womenCut: "rounded-2xl rounded-tr-[2rem]",
+  menCut: "rounded-[1.35rem] rounded-bl-3xl",
+  color: "rounded-3xl rounded-br-xl",
+  blowDry: "rounded-2xl rounded-tl-3xl",
+  balayage: "rounded-2xl rounded-br-[1.75rem]",
+  care: "rounded-[1.25rem] rounded-tr-3xl",
+  events: "rounded-2xl sm:rounded-3xl sm:rounded-bl-[2.5rem]",
+};
 
 export function ServicesSection({ dict }: { dict: Dictionary }) {
   const items = dict.services.items;
@@ -60,85 +113,77 @@ export function ServicesSection({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="services"
-      className="relative z-20 -mt-10 scroll-mt-[calc(5rem+env(safe-area-inset-top))] rounded-t-[1.75rem] border-b border-border/50 bg-background bg-gradient-to-b from-background via-card/15 to-background pt-14 pb-20 shadow-[0_-8px_48px_-12px_rgba(0,0,0,0.35)] md:-mt-12 md:scroll-mt-28 md:rounded-t-[2rem] md:pt-16 md:pb-28"
+      className="relative z-20 -mt-10 scroll-mt-[calc(5rem+env(safe-area-inset-top))] rounded-t-[1.75rem] border-b border-border/50 bg-background pt-12 pb-16 shadow-[0_-6px_32px_-10px_rgba(0,0,0,0.25)] md:-mt-12 md:scroll-mt-28 md:rounded-t-[2rem] md:pt-14 md:pb-24"
     >
       <div className="container px-5 md:px-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-white/25" aria-hidden />
-              <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-muted-foreground">
-                {dict.brand}
-              </p>
-            </div>
-            <h2 className="mt-5 font-display text-3xl tracking-tight text-foreground md:text-5xl">
-              {dict.services.title}
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base md:text-right">
+        <header className="max-w-2xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+            {dict.brand}
+          </p>
+          <h2 className="mt-3 font-display text-3xl tracking-tight text-foreground md:text-4xl">
+            {dict.services.title}
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
             {dict.services.lead}
           </p>
-        </div>
+        </header>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-5">
           {ORDER.map((key, index) => {
             const item = items[key];
             const Icon = ICONS[key];
-            const featured = key === "womenCut";
-            const banner = key === "events";
+            const wide = key === "events";
+            const theme = SERVICE_THEME[key];
+            const radius = CARD_RADIUS[key];
+            const tiltEven = index % 2 === 0;
 
             return (
               <motion.article
                 key={key}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] backdrop-blur-md transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:shadow-xl hover:shadow-black/40 md:p-8 ${placementClasses(key)} ${featured ? "min-h-[280px] md:min-h-[320px]" : ""} ${banner ? "flex flex-col justify-center md:flex-row md:items-center md:justify-between md:gap-10" : ""}`}
+                viewport={{ once: true, margin: "-32px" }}
+                transition={{ duration: 0.35, delay: index * 0.03 }}
+                whileHover={{
+                  rotate: tiltEven ? 0.4 : -0.4,
+                  transition: { duration: 0.2 },
+                }}
+                className={cn(
+                  "group relative overflow-hidden p-6 transition-[transform] duration-200 md:p-7",
+                  radius,
+                  theme.card,
+                  wide ? "sm:col-span-2 lg:col-span-3" : "",
+                )}
               >
                 <div
-                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-100 md:h-64 md:w-64"
+                  className={cn(theme.blob, "pointer-events-none")}
                   aria-hidden
                 />
 
-                <span
-                  className={`absolute font-display text-white/[0.06] transition-colors duration-300 group-hover:text-white/[0.09] ${featured ? "right-4 top-4 text-8xl md:right-8 md:top-8 md:text-9xl" : "right-5 top-5 text-6xl md:text-7xl"}`}
-                  aria-hidden
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
                 <div
-                  className={`relative flex h-full flex-col ${banner ? "md:flex-row md:items-center md:gap-8" : ""}`}
+                  className={cn(
+                    "relative flex gap-4",
+                    wide ? "flex-col sm:flex-row sm:items-center sm:gap-8" : "flex-col",
+                  )}
                 >
                   <span
-                    className={`flex shrink-0 items-center justify-center rounded-xl bg-white/10 text-foreground ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-[1.03] ${featured ? "mb-6 h-14 w-14 md:mb-8 md:h-16 md:w-16" : "mb-5 h-12 w-12"}`}
+                    className={cn(
+                      "relative flex h-11 w-11 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3",
+                      theme.iconWrap,
+                    )}
+                    aria-hidden
                   >
-                    <Icon
-                      className={featured ? "h-7 w-7 md:h-8 md:w-8" : "h-5 w-5"}
-                      aria-hidden
-                    />
+                    <Icon className={cn("h-5 w-5", theme.icon)} />
                   </span>
 
-                  <div className={banner ? "md:flex-1" : ""}>
-                    <h3
-                      className={`font-display text-foreground ${featured ? "text-2xl md:text-3xl" : "text-xl"} ${banner ? "md:text-2xl" : ""}`}
-                    >
+                  <div className="relative min-w-0 flex-1">
+                    <h3 className="font-display text-lg text-foreground md:text-xl">
                       {item.title}
                     </h3>
-                    <p
-                      className={`mt-3 text-muted-foreground ${featured ? "max-w-lg text-base md:text-lg" : "text-sm leading-relaxed md:text-[15px]"}`}
-                    >
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
                       {item.desc}
                     </p>
                   </div>
-
-                  {!banner && (
-                    <div className="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:mt-auto">
-                      <span className="h-px w-6 bg-white/30" aria-hidden />
-                      <span>Merylin</span>
-                    </div>
-                  )}
                 </div>
               </motion.article>
             );
