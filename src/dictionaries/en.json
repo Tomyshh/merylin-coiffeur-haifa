@@ -1,17 +1,17 @@
 {
   "meta": {
-    "title": "Merylin — Hair Salon Haifa | Color, Styling & Keratin in Neve Sha'anan",
-    "description": "Merylin is a premium hair salon in Haifa (Neve Sha'anan): cuts, color, balayage, blowouts and treatments. Experience refined styling — among the best hair salon experiences in Haifa.",
+    "title": "Mery — Hair Salon Haifa | Color, Styling & Keratin in Neve Sha'anan",
+    "description": "Mery is a premium hair salon in Haifa (Neve Sha'anan): cuts, color, balayage, blowouts and treatments. Experience refined styling — among the best hair salon experiences in Haifa.",
     "keywords": "hair salon Haifa, best hair salon in Haifa, Haifa hair stylist, Neve Sha'anan salon, hair color Haifa, keratin Haifa, מספרה חיפה, מספרה נווה שאנן, עיצוב שיער חיפה, החלקות שיער חיפה, צביעת שיער חיפה, מספרת נשים חיפה"
   },
-  "brand": "Merylin",
+  "brand": "Mery",
   "nav": {
     "services": "Services",
     "gallery": "Gallery",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Merylin",
+    "title": "Mery",
     "subtitleLine": "Premium hair salon in Haifa",
     "metaLine": "04-822-7005 · Haifa · Neve Sha'anan",
     "tagline": "Precision, calm luxury, and hair that feels expensive — a Haifa salon centered on you.",
@@ -19,7 +19,7 @@
     "ctaSecondary": "Call us",
     "imageAlt": "Premium hair salon atmosphere",
     "sideColumn": {
-      "kicker": "Merylin",
+      "kicker": "Mery",
       "body": "Color · Cut · Care\nHaifa, Neve Sha'anan",
       "accent": "We look forward to meeting you"
     }

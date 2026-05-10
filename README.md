@@ -1,4 +1,4 @@
-# Merylin — Salon de coiffure (Haïfa)
+# Mery — Salon de coiffure (Haïfa)
 
 Site vitrine **Next.js (App Router)** + **Tailwind CSS** : hébreu par défaut (`/he/`), anglais (`/en/`), design épuré et SEO (metadata, sitemap, robots, JSON-LD).
 
