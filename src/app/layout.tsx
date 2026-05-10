@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { DM_Sans, Outfit, Playfair_Display } from "next/font/google";
 
@@ -20,6 +21,13 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
