@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import { Hero } from "@/components/ui/hero";
 import type { Dictionary, Locale } from "@/lib/i18n";
-import { SITE_PHONE_TEL, SITE_WHATSAPP_URL } from "@/lib/site";
+import { SITE_PHONE_TEL } from "@/lib/site";
 
 const fontOutfit = "[font-family:var(--font-outfit),var(--font-dm-sans),sans-serif]";
 
@@ -110,17 +110,10 @@ export function HeroSection({
         subtitle={dict.hero.tagline}
         actions={[
           {
-            label: dict.hero.ctaSecondary,
-            href: SITE_PHONE_TEL,
-            variant: "outline",
-            className: cnBtnOutline(),
-          },
-          {
             label: dict.hero.ctaPrimary,
-            href: SITE_WHATSAPP_URL,
+            href: SITE_PHONE_TEL,
             variant: "default",
-            className:
-              "bg-[#25D366] text-white hover:bg-[#22c55e] shadow-lg shadow-black/25 [font-family:var(--font-outfit),sans-serif] font-semibold tracking-wide",
+            className: cnBtnOutline(),
           },
         ]}
         titleClassName="w-full max-w-4xl"

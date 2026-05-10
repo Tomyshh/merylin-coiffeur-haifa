@@ -7,7 +7,6 @@ import {
   MAP_EXTERNAL_URL,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_TEL,
-  SITE_WHATSAPP_URL,
 } from "@/lib/site";
 
 export function ContactSection({ dict }: { dict: Dictionary }) {
@@ -38,20 +37,6 @@ export function ContactSection({ dict }: { dict: Dictionary }) {
                     className="mt-1 block font-display text-xl text-foreground transition-colors hover:text-white"
                   >
                     {SITE_PHONE_DISPLAY}
-                  </Link>
-                </dd>
-              </div>
-
-              <div className="flex gap-4">
-                <dt className="sr-only">{dict.contact.whatsappLabel}</dt>
-                <dd className="flex flex-col gap-3">
-                  <Link
-                    href={SITE_WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-fit items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:bg-[#20bd5a]"
-                  >
-                    {dict.contact.whatsappLabel}
                   </Link>
                 </dd>
               </div>

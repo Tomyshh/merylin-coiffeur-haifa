@@ -1,6 +1,5 @@
-export const SITE_PHONE_DISPLAY = "04-822-7005";
-export const SITE_PHONE_TEL = "tel:+97248227005";
-export const SITE_WHATSAPP_URL = "https://wa.me/97248227005";
+export const SITE_PHONE_DISPLAY = "04-822-2594";
+export const SITE_PHONE_TEL = "tel:+97248222594";
 
 /** Stable Unsplash sources — salon / hair imagery */
 export const HERO_IMAGE =

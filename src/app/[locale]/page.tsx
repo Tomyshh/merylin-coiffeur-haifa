@@ -5,7 +5,6 @@ import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { JsonLd } from "@/components/json-ld";
 import { ServicesSection } from "@/components/services-section";
-import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default async function HomePage({
@@ -28,7 +27,6 @@ export default async function HomePage({
         <ContactSection dict={dict} />
       </main>
       <Footer locale={locale} dict={dict} />
-      <WhatsAppFab label={dict.whatsappFab} />
     </>
   );
 }

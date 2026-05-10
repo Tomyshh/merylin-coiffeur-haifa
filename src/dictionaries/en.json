@@ -13,10 +13,9 @@
   "hero": {
     "title": "Mery",
     "subtitleLine": "Premium hair salon in Haifa",
-    "metaLine": "04-822-7005 · Haifa · Neve Sha'anan",
+    "metaLine": "04-822-2594 · Haifa · Neve Sha'anan",
     "tagline": "Precision, calm luxury, and hair that feels expensive — a Haifa salon centered on you.",
-    "ctaPrimary": "Book on WhatsApp",
-    "ctaSecondary": "Call us",
+    "ctaPrimary": "Call us",
     "imageAlt": "Premium hair salon atmosphere",
     "sideColumn": {
       "kicker": "Mery",
@@ -53,7 +52,6 @@
     "title": "Let's talk",
     "lead": "Book your next visit — hair salon Haifa, Neve Sha'anan.",
     "phoneLabel": "Phone",
-    "whatsappLabel": "WhatsApp",
     "addressLabel": "Address",
     "hoursLabel": "Hours",
     "address": "Neve Sha'anan, Haifa",
@@ -64,6 +62,5 @@
   },
   "footer": {
     "rights": "All rights reserved."
-  },
-  "whatsappFab": "Message on WhatsApp"
+  }
 }

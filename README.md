@@ -46,4 +46,4 @@ Copier `.env.example` vers `.env.local` si besoin :
 
 - Textes : `src/dictionaries/he.json`, `src/dictionaries/en.json`
 - Images distantes : `next.config.ts` (`images.unsplash.com`)
-- Téléphone / WhatsApp / carte : `src/lib/site.ts`
+- Téléphone / carte : `src/lib/site.ts`
