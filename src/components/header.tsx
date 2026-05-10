@@ -54,7 +54,7 @@ export function Header({
         <Link
           href={prefix}
           className={cn(
-            "font-display text-lg tracking-[0.14em] md:text-xl",
+            "font-display text-xl tracking-[0.14em] md:text-2xl",
             scrolled ? "text-foreground" : "text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]",
           )}
         >
@@ -63,7 +63,7 @@ export function Header({
 
         <nav
           className={cn(
-            "hidden items-center gap-7 text-[13px] font-medium tracking-wide md:flex",
+            "hidden items-center gap-7 text-sm font-medium tracking-wide md:flex",
             "[font-family:var(--font-outfit),var(--font-dm-sans),sans-serif]",
             scrolled ? "text-muted-foreground" : "text-white/90",
           )}
@@ -87,7 +87,7 @@ export function Header({
           <Link
             href={`/${otherLocale}/`}
             className={cn(
-              "rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-colors [font-family:var(--font-outfit),sans-serif]",
+              "rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors [font-family:var(--font-outfit),sans-serif]",
               scrolled
                 ? "border-border/80 text-foreground hover:border-primary hover:text-primary"
                 : "border-white/35 bg-black/15 text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/10",
@@ -101,7 +101,7 @@ export function Header({
 
       <nav
         className={cn(
-          "flex justify-center gap-6 border-t border-white/[0.05] px-4 py-2.5 text-[11px] font-medium md:hidden [font-family:var(--font-outfit),sans-serif]",
+          "flex justify-center gap-6 border-t border-white/[0.05] px-4 py-2.5 text-xs font-medium md:hidden [font-family:var(--font-outfit),sans-serif]",
           scrolled ? "border-border/40 text-muted-foreground" : "text-white/85",
         )}
         aria-label="Primary mobile"

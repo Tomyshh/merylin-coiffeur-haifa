@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export type HeroAction = {
-  label: string;
+  label: React.ReactNode;
   href: string;
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
   className?: string;

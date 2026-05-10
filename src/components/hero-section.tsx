@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Phone } from "lucide-react";
 
 import { Hero } from "@/components/ui/hero";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -101,23 +102,29 @@ export function HeroSection({
             />
 
             <p
-              className={`max-w-md text-[10px] font-medium uppercase tracking-[0.32em] text-stone-300/95 md:text-[11px] ${fontOutfit}`}
+              className={`max-w-md text-xs font-medium uppercase tracking-[0.28em] text-stone-300/95 md:text-sm ${fontOutfit}`}
             >
-              {dict.hero.metaLine}
+              <span className="block">{dict.hero.metaLine}</span>
+              <span className="mt-2 block">{dict.contact.address}</span>
             </p>
           </span>
         }
         subtitle={dict.hero.tagline}
         actions={[
           {
-            label: dict.hero.ctaPrimary,
+            label: (
+              <span className="inline-flex items-center gap-2">
+                <Phone className="h-5 w-5" aria-hidden />
+                {dict.hero.ctaPrimary}
+              </span>
+            ),
             href: SITE_PHONE_TEL,
             variant: "default",
-            className: cnBtnOutline(),
+            className: cnBtnPrimary(),
           },
         ]}
         titleClassName="w-full max-w-4xl"
-        subtitleClassName={`max-w-md text-[15px] leading-relaxed text-stone-200/95 md:max-w-lg md:text-base ${fontOutfit}`}
+        subtitleClassName="max-w-md font-display text-lg font-light leading-relaxed tracking-[0.04em] text-stone-100/95 md:max-w-xl md:text-2xl"
         actionsClassName={`mt-4 flex flex-wrap justify-start gap-3 md:mt-6 md:gap-4 ${fontOutfit}`}
       />
     </div>
@@ -135,10 +142,11 @@ function cnInnerHero() {
   ].join(" ");
 }
 
-function cnBtnOutline() {
+function cnBtnPrimary() {
   return [
-    "border border-white/45 bg-white/[0.08] text-white backdrop-blur-md",
-    "hover:border-white/70 hover:bg-white/[0.16] hover:text-white",
-    "[font-family:var(--font-outfit),sans-serif] font-semibold tracking-wide",
+    "h-[3.25rem] rounded-full border border-emerald-200/70 bg-emerald-500 px-8 text-base text-white shadow-2xl shadow-emerald-950/35 backdrop-blur-md",
+    "hover:bg-emerald-400 hover:text-white hover:shadow-emerald-300/25",
+    "md:h-14 md:px-10 md:text-lg",
+    "[font-family:var(--font-outfit),sans-serif] font-bold tracking-wide",
   ].join(" ");
 }

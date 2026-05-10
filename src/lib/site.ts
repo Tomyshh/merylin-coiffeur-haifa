@@ -16,10 +16,10 @@ export const GALLERY_IMAGES = [
 
 /** Embed sans entité HTML dans le query string (évite Invalid pb) */
 export const MAP_EMBED_URL =
-  "https://maps.google.com/maps?q=Neve+Shaanan,+Haifa,+Israel&output=embed";
+  "https://maps.google.com/maps?q=Shalom+Aleichem+St+1,+Haifa,+Israel&output=embed";
 
 export const MAP_EXTERNAL_URL =
-  "https://www.google.com/maps/search/?api=1&query=Neve+Sha'anan,+Haifa,+Israel";
+  "https://www.google.com/maps/search/?api=1&query=Shalom+Aleichem+St+1,+Haifa,+Israel";
 
 export function getSiteUrl() {
   return (
